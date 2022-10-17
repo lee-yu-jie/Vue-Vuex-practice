@@ -1,4 +1,6 @@
 <script>
+import { onMounted } from 'vue';
+import { useStore } from 'vuex';
 import MenuBtn from "../src/components/MenuBtn.vue";
 import MenuSlid from "../src/components/MenuSlid.vue";
 export default {
@@ -7,6 +9,13 @@ export default {
     MenuSlid,
   },
   setup() {
+    const store = useStore()
+
+    onMounted(() => {
+      // 因Auth/index.js有加namespaced:true,所以要取用內容時都要用嚴謹的路徑
+      store.dispatch('Auth/handSetToken', 'aaaa')
+      console.log(store.getters['Auth/getToken']);
+    })
     return {};
   },
 };

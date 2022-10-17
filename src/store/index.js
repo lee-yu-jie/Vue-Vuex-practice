@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-
+import Auth from "./Auth";
 export default createStore({
   // state是放資料地方
   state: {
@@ -27,4 +27,7 @@ export default createStore({
       return state.isOpen
     }
   },
+  modules: {
+    Auth,
+  }
 });
